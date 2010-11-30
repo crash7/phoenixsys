@@ -4,21 +4,19 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import phoenix.Phoenix;
-import phoenix.classes.Database;
 
 /**
  * @author Chris
  */
 public class MainMenu extends JPanel {
-    
-    public MainMenu() {
+    Phoenix program;
+
+    public MainMenu(Phoenix prg) {
         super(null, false);
+        program = prg;
         
         setBackground(Color.GRAY);
         makeMenu();
@@ -53,7 +51,7 @@ public class MainMenu extends JPanel {
         ordenes.addActionListener(
             new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
-                    throw new UnsupportedOperationException("Not supported yet.");
+                    program.changePanel(new Orders(program));
                 }
             }
         );
