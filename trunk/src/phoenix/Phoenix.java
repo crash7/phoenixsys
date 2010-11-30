@@ -48,6 +48,7 @@ public class Phoenix extends JFrame {
         getContentPane().setVisible(false);
         setContentPane(toshow);
         getContentPane().setVisible(true);
+
     }
 
     public JPanel getMainMenu() {
@@ -69,7 +70,6 @@ public class Phoenix extends JFrame {
             System.out.println("Settings.ini " + e.getMessage());
             System.exit(1);
         }
-
     }
 
 }
