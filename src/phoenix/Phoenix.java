@@ -44,13 +44,15 @@ public class Phoenix extends JFrame {
         setVisible(true);
     }
 
-    public void changePanel(JPanel panel) {
-
+    public void changePanel(JPanel toshow) {
+        getContentPane().setVisible(false);
+        setContentPane(toshow);
+        getContentPane().setVisible(true);
     }
 
     public JPanel getMainMenu() {
         if(menu == null) {
-            menu = new MainMenu();
+            menu = new MainMenu(this);
         }
         return menu;
     }
