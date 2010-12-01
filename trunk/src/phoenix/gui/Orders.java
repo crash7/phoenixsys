@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusAdapter;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -53,6 +54,33 @@ public class Orders extends JPanel {
         addorder.setBounds(10, 10, 40, 40);
         searchorder.setBounds(Phoenix.FWIDTH-90, 10, 60, 40);
         searchbox.setBounds(Phoenix.FWIDTH-340, 10, 250, 40);
+
+        addorder.addActionListener(
+            new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+
+                }
+            }
+        );
+        searchorder.addActionListener(
+            new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+
+                }
+            }
+        );
+        searchbox.addFocusListener(new FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                JTextField field = (JTextField) evt.getSource();
+                field.setText("");
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                JTextField field = (JTextField) evt.getSource();
+                if(field.getText().isEmpty()) {
+                    field.setText("Buscar orden..");
+                }
+            }
+        });
 
         header.add(addorder);
         header.add(searchorder);
@@ -117,6 +145,42 @@ public class Orders extends JPanel {
         ammount_value.setBounds(200, 90, 200, 10);
         status_value.setBounds(200, 105, 200, 10);
 
+
+        createpreorder.addActionListener(
+            new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+
+                }
+            }
+        );
+        currentpreorder.addActionListener(
+            new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+
+                }
+            }
+        );
+        seepreorders.addActionListener(
+            new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+
+                }
+            }
+        );
+        history.addActionListener(
+            new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+
+                }
+            }
+        );
+        billthis.addActionListener(
+            new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+
+                }
+            }
+        );
         editorder.addActionListener(
             new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
