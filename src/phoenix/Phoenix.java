@@ -12,7 +12,8 @@ import phoenix.gui.MainMenu;
  */
 public class Phoenix extends JFrame {
     public static Properties settings;
-    public static int FWIDTH, FHEIGHT;
+    public static final int FWIDTH = 800;
+    public static final int FHEIGHT = 700;
 
     private MainMenu menu = null;
 
@@ -33,9 +34,6 @@ public class Phoenix extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(false);
 
-        FWIDTH = Integer.parseInt(getSetting("width"));
-        FHEIGHT = Integer.parseInt(getSetting("height"));
-        
         java.awt.Dimension screen_size = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         setBounds((screen_size.width - FWIDTH) / 2, (screen_size.height - FHEIGHT) / 2, FWIDTH, FHEIGHT);
 
