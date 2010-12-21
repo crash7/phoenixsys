@@ -5,6 +5,7 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import phoenix.Phoenix;
 
@@ -65,7 +66,16 @@ public class MainMenu extends JPanel {
         about.addActionListener(
             new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
-                    System.exit(1);
+                    FDialog dialog = new FDialog(program, "About");
+                    JLabel logo = new JLabel(new javax.swing.ImageIcon(getClass().getClassLoader().getResource("phoenix/resources/phoenix.gif")));
+
+                    logo.setBounds(0, 0, 200, 200);
+                    logo.setToolTipText("This ugly coded system");
+
+                    dialog.setDialogSize(200, 220);
+                    dialog.getContentPane().add(logo);
+                    dialog.setVisible(true);
+
                 }
             }
         );

@@ -57,7 +57,7 @@ public class Phoenix extends JFrame {
     }
 
     public void showMainMenu() {
-        
+        changePanel(getMainMenu());
     }
     
     private void loadSettings() {

@@ -67,15 +67,18 @@ public class Orders extends JPanel {
         JButton addorder = new JButton();
         JButton seeorders = new JButton("Ver trabajos realizados");
         JButton searchorder = new JButton();
-        JTextField searchbox = new JTextField("Buscar orden..");
+        JButton mainmenu = new JButton();
+        JTextField searchbox = new JTextField("Buscar orden...");
 
         addorder.setIcon(new ImageIcon(getClass().getClassLoader().getResource("phoenix/resources/add.gif")));
+        mainmenu.setIcon(new ImageIcon(getClass().getClassLoader().getResource("phoenix/resources/home.png")));
         searchorder.setIcon(new ImageIcon(getClass().getClassLoader().getResource("phoenix/resources/search.gif")));
 
         addorder.setBounds(10, 10, 40, 40);
         seeorders.setBounds(100, 10, 200, 40);
-        searchorder.setBounds(Phoenix.FWIDTH - 90, 10, 60, 40);
-        searchbox.setBounds(Phoenix.FWIDTH - 340, 10, 250, 40);
+        mainmenu.setBounds(Phoenix.FWIDTH - 60 , 10, 50, 50);
+        searchorder.setBounds(Phoenix.FWIDTH - 80 - 90, 10, 60, 40);
+        searchbox.setBounds(Phoenix.FWIDTH -80 - 340, 10, 250, 40);
 
         addorder.addActionListener(
                 new ActionListener() {
@@ -84,13 +87,19 @@ public class Orders extends JPanel {
                         newOrder();
                     }
                 });
+        mainmenu.addActionListener(
+                new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                        program.showMainMenu();
+                    }
+                });
         seeorders.addActionListener(
                 new ActionListener() {
-
                     public void actionPerformed(ActionEvent e) {
                         //cargar trabajos con estado finalizado?
                     }
-                });
+                }
+        );
         searchorder.addActionListener(
                 new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
@@ -109,7 +118,7 @@ public class Orders extends JPanel {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 JTextField field = (JTextField) evt.getSource();
                 if (field.getText().isEmpty()) {
-                    field.setText("Buscar orden..");
+                    field.setText("Buscar orden...");
                 }
             }
         });
@@ -118,6 +127,7 @@ public class Orders extends JPanel {
         header.add(seeorders, 1);
         header.add(searchorder, 2);
         header.add(searchbox, 3);
+        header.add(mainmenu, 4);
     }
 
     private void makeEmptyContent() {
@@ -212,14 +222,16 @@ public class Orders extends JPanel {
 
         createpreorder.addActionListener(
                 new ActionListener() {
-
                     public void actionPerformed(ActionEvent e) {
+                        PreOrders preorder = new PreOrders(program, "");
+                        preorder.newPreOrder(1);
                     }
                 });
         currentpreorder.addActionListener(
                 new ActionListener() {
-
                     public void actionPerformed(ActionEvent e) {
+                        PreOrders preorder = new PreOrders(program, "");
+                        preorder.loadPreOrder(1);
                     }
                 });
         seepreorders.addActionListener(
@@ -360,6 +372,7 @@ public class Orders extends JPanel {
 
         resultwindow.getContentPane().add(tablepanel);
         resultwindow.setDialogSize(600, 200);
+        tablepanel.setBounds(0, 0, 596, 198);
         resultwindow.setVisible(true);
     }
 
@@ -432,6 +445,7 @@ public class Orders extends JPanel {
 
                         currentdialog.getContentPane().add(tablepanel);
                         currentdialog.setDialogSize(500, 200);
+                        tablepanel.setBounds(0, 0, 496, 198);
                         currentdialog.setVisible(true);
                     }
                 });
