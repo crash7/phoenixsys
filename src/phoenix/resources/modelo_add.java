@@ -99,28 +99,27 @@ public class modelo_add extends javax.swing.JFrame {
         getContentPane().add(jScrollPane1);
         jScrollPane1.setBounds(20, 160, 500, 230);
 
-        jLabel1.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Trebuchet MS", 1, 14));
         jLabel1.setText("Nuevo presupuesto");
         getContentPane().add(jLabel1);
         jLabel1.setBounds(20, 10, 180, 40);
 
-        jLabel2.setFont(new java.awt.Font("Trebuchet MS", 0, 12)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Trebuchet MS", 0, 12));
         jLabel2.setText("Orden asociada: 99999999999");
         getContentPane().add(jLabel2);
         jLabel2.setBounds(20, 50, 250, 20);
 
-        jLabel3.setFont(new java.awt.Font("Trebuchet MS", 0, 12)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Trebuchet MS", 0, 12));
         jLabel3.setText("Fecha de creacion:");
         getContentPane().add(jLabel3);
         jLabel3.setBounds(20, 80, 110, 20);
 
-        jLabel4.setFont(new java.awt.Font("Trebuchet MS", 0, 12)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Trebuchet MS", 0, 12));
         jLabel4.setText("Fecha de vencimiento:");
         getContentPane().add(jLabel4);
         jLabel4.setBounds(20, 110, 130, 20);
 
-        jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter()));
-        jFormattedTextField1.setText("16/12/1098");
+        jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
         getContentPane().add(jFormattedTextField1);
         jFormattedTextField1.setBounds(160, 80, 80, 20);
 

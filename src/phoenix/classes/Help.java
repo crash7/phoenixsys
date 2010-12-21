@@ -22,4 +22,20 @@ public class Help {
         
         return types;
     }
+
+    public static Object[] getMaterials() {
+        Object[] types = null;
+        Database db;
+        try {
+            db = new Database();
+            db.select("Materiales", "idMaterial, Material", null, null);
+            ResultSet r = db.getResult();
+            types = new Object[db.nrows];
+            while (r.next()) {
+                types[r.getRow()-1] = r.getString("Material");
+            }
+        } catch (SQLException e) { System.out.println("Error getMaterials"); }
+
+        return types;
+    }
 }

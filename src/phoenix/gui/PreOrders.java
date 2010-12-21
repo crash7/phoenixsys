@@ -8,17 +8,15 @@ import java.awt.event.MouseEvent;
 import java.util.Calendar;
 import javax.swing.DefaultCellEditor;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
 import javax.swing.JTable;
-import javax.swing.event.TableModelEvent;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.event.TableModelListener;
-import javax.swing.table.TableColumn;
-import phoenix.classes.Materials;
+import phoenix.classes.Help;
 import phoenix.classes.PreOrder;
 
 /**
@@ -28,7 +26,6 @@ public class PreOrders {
     private PreOrder preorder;
     private FDialog dialog;
     private String fichapath;
-    private Materials materials;
 
     public PreOrders(JFrame parent, String title) {
         dialog = new FDialog(parent, title);
@@ -38,7 +35,6 @@ public class PreOrders {
         dialog.setTitle("Nuevo presupuesto");
         preorder = new PreOrder();
         preorder.setOrderId(orderid);
-        materials = new Materials();
         
         JLabel newpreorder = new JLabel("Nuevo presupuesto");
         JLabel order_data = new JLabel("Orden asociada: " + preorder.getOrderId());
@@ -101,22 +97,16 @@ public class PreOrders {
                 }
         );
 
-        date_value.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter()));
-        expirationdate_value.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter()));
+        date_value.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/MM/yyyy"))));
+        expirationdate_value.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/MM/yyyy"))));
         date_value.setText(Calendar.getInstance().get(Calendar.DATE) + "/" + Calendar.getInstance().get(Calendar.MONTH) + "/" + Calendar.getInstance().get(Calendar.YEAR));
-        expirationdate_value.setText(Calendar.getInstance().get(Calendar.DATE) + "/" + Calendar.getInstance().get(Calendar.MONTH) + "/" + Calendar.getInstance().get(Calendar.YEAR));
+        expirationdate_value.setText(date_value.getText());
 
         elements = new Object [5][4];
-        table.setModel(new javax.swing.table.DefaultTableModel(elements, new String [] {"Cantidad", "Materiales", "Precio unitario", "Precio total"}));
-        table.getColumnModel().getColumn(1).setCellEditor(new DefaultCellEditor(materials.getMaterials()));
-        table.getModel().addTableModelListener(new TableModelListener() {
-            public void tableChanged(TableModelEvent e) {
-                if(e.getType() == TableModelEvent.UPDATE) {
-                    JTable table = (JTable) e.getSource();
-
-                }
-            }
-        });
+        table.setModel(new javax.swing.table.DefaultTableModel(elements, new String [] {"Cantidad", "Materiales", "Importe"}));
+        table.getTableHeader().setReorderingAllowed(false);
+        table.getTableHeader().setResizingAllowed(false);
+        table.getColumnModel().getColumn(1).setCellEditor(new DefaultCellEditor(new JComboBox(Help.getMaterials())));
         table.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
                 if (e.getButton() == MouseEvent.BUTTON1) {
