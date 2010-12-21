@@ -1,15 +1,9 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package phoenix.classes;
 
 import com.mysql.jdbc.ResultSet;
 import java.sql.SQLException;
 
 /**
- *
  * @author Chris
  */
 public class Help {

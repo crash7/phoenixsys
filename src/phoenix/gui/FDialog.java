@@ -9,6 +9,14 @@ public class FDialog extends javax.swing.JDialog {
         super(parent, title);
         setModal(true);
         setResizable(false);
+        getContentPane().setLayout(null);
+    }
+
+    public FDialog(javax.swing.JDialog parent, String title) {
+        super(parent, title);
+        setModal(true);
+        setResizable(false);
+        getContentPane().setLayout(null);
     }
 
     public void setDialogSize(int w, int h) {
